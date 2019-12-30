@@ -1,0 +1,141 @@
+{
+  "version": 1,
+  "projects": {
+    "angular-core": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/angular-core",
+      "sourceRoot": "apps/angular-core/src",
+      "prefix": "angular-core",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/angular-core",
+            "index": "apps/angular-core/src/index.html",
+            "main": "apps/angular-core/src/main.ts",
+            "polyfills": "apps/angular-core/src/polyfills.ts",
+            "tsConfig": "apps/angular-core/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "apps/angular-core/src/favicon.ico",
+              "apps/angular-core/src/assets"
+            ],
+            "styles": ["apps/angular-core/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/angular-core/src/environments/environment.ts",
+                  "with": "apps/angular-core/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "angular-core:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "angular-core:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "angular-core:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/angular-core/tsconfig.app.json",
+              "apps/angular-core/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/angular-core/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/angular-core/jest.config.js",
+            "tsConfig": "apps/angular-core/tsconfig.spec.json",
+            "setupFile": "apps/angular-core/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "angular-core-e2e": {
+      "root": "apps/angular-core-e2e",
+      "sourceRoot": "apps/angular-core-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/angular-core-e2e/cypress.json",
+            "tsConfig": "apps/angular-core-e2e/tsconfig.e2e.json",
+            "devServerTarget": "angular-core:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "angular-core:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/angular-core-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/angular-core-e2e/**"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "angular-core"
+}

@@ -1,0 +1,18 @@
+{
+  "npmScope": "angular-core",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": "*",
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "angular-core-e2e": {
+      "tags": []
+    },
+    "angular-core": {
+      "tags": []
+    }
+  }
+}
