@@ -7,6 +7,7 @@
     "nx": "nx",
     "start": "ng serve",
     "build": "ng build",
+    "watch": "ng build --watch",
     "test": "ng test",
     "lint": "nx workspace-lint && ng lint",
     "e2e": "ng e2e",
