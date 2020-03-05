@@ -1,5 +1,5 @@
 {
-  "npmScope": "angular-core",
+  "npmScope": "app",
   "implicitDependencies": {
     "angular.json": "*",
     "package.json": "*",
@@ -12,6 +12,21 @@
       "tags": []
     },
     "angular-core": {
+      "tags": []
+    },
+    "material": {
+      "tags": []
+    },
+    "ui-login": {
+      "tags": []
+    },
+    "ui-toolbar": {
+      "tags": []
+    },
+    "core-data": {
+      "tags": []
+    },
+    "state": {
       "tags": []
     }
   }

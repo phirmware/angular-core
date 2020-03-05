@@ -1,0 +1,11 @@
+<div class="container">
+  <!-- PROJECTS LIST -->
+  <div class="col-50">
+    <angular-core-projects-list [projects]="projects$ | async" (selected)="selectProject($event)" (deleted)="deleteProject($event)">
+    </angular-core-projects-list>
+  </div>
+  <!-- PROJECT DETAILS -->
+  <div class="col-50">
+    <angular-core-project-details [selectedProject]="selectedProject" (cancel)="cancel()" (save)="saveProject($event)"></angular-core-project-details>
+  </div>
+</div>
